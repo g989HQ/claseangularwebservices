@@ -1,0 +1,37 @@
+<h1>Componente Profesor</h1>
+<p>Nombre: {{nombre}}</p>
+<p>Edad: {{edad}}</p>
+<p>Trabajos: {{trabajos}}</p>
+
+<ul [ngSwitch]="color">
+    <li *ngSwitchCase="'red'" [ngStyle]= "{'color': color}" Red>Caso rojo</li>
+    <li *ngSwitchCase="'green'" [ngStyle]= "{'color': color}" Green>Caso verde</li>
+    <li *ngSwitchCase="'blue'" [ngStyle]= "{'color': color}" Blue>Caso azul</li>
+    <li *ngSwitchDefault>Caso por defecto</li>
+</ul>
+
+<h2>LISTADO PROFESORES</h2>
+<ul>
+    <li *ngFor="let i of profesorado; let x = index">
+        <strong> Profesor {{x+1}}</strong>
+        <ul>
+            <li>{{i.nombre}}</li>
+            <li>{{i.edad}}</li>
+            <li>{{i.materia}}</li>
+            <li *ngIf="i.contratado">contratado</li>
+            <li *ngIf="!i.contratado">no contratado</li>
+        </ul>
+    </li>
+<ul>
+
+<h2>otro</h2>
+<ul>
+    <li>{{profesor.nombre}}</li>
+    <li>{{profesor.edad}}</li>
+    <li>{{profesor.materia}}</li>
+    <li *ngIf="profesor.contratado">contratado</li>
+    <li *ngIf="!profesor.contratado">no contratado</li>
+</ul>
+
+
+
