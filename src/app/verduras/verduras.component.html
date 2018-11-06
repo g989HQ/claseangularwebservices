@@ -1,0 +1,10 @@
+<form #formVerduras="ngForm" id="formVerduras" (ngSubmit)="guardarForm">
+  
+  <input type="text" placeholder="{{formNombre}}" name="nombre" [(ngModel)]="verdura.nombre" required pattern="[a-zA-Z]+"> <br/>
+ <span *ngIf="!verdura.nombre.valid"> Nombre Icorrecto></span>
+  <label> {{formPrecio}}</label>
+  <input type="number" name="precio" [(ngModel)]="verdura.precio"> <br/>
+  <textarea placeholder="{{formDescripcion}}" name="descripcion" [(ngModel)]="verdura.descripcion"></textarea>
+  <input type="submit" value="{{formGuardar}}" [disabled]="!formVerduras.form.valid"> 
+ 
+</form>

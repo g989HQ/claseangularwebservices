@@ -1,3 +1,4 @@
+<app-verduras></app-verduras>
 <h1>Componente Profesor</h1>
 <p>Nombre: {{nombre}}</p>
 <p>Edad: {{edad}}</p>
@@ -24,6 +25,7 @@
     </li>
 <ul>
 
+   
 <h2>otro</h2>
 <ul>
     <li>{{profesor.nombre}}</li>
@@ -33,5 +35,14 @@
     <li *ngIf="!profesor.contratado">no contratado</li>
 </ul>
 
+<h3>Respuesta de la Api</h3>
+<ul *ngIf="api_posts">
+    <li *ngFor="let post of api_posts">
+
+     {{post.id}} - {{post.title}}   
+     
+    </li>
+    
+</ul>
 
 

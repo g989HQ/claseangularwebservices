@@ -1,9 +1,12 @@
 import {Component} from '@angular/core';
 import{Profesor} from './profesor';
+import{PeticionesService} from "../app/services/peticiones.service";
+//import{Router,ActivatedRoute, Params} from '@angular/router';
 
 @Component({
     selector: 'app-profesor',
-    templateUrl: './profesor.component.html'
+    templateUrl: './profesor.component.html',
+    providers:[PeticionesService]
 
  } )
 export class ProfesorComponent{
@@ -14,8 +17,15 @@ export class ProfesorComponent{
     public profesor:Profesor;
     public profesorado:Array<Profesor>;
     public color:String;
+    public admin:boolean;
+    public api_posts;
+    public parametro;
 
-    constructor(){
+    constructor(
+    private _peticionesService:PeticionesService,
+  //  private _route:ActivatedRoute,
+    //private _router:Router
+    ){
         this.nombre='Javi';
         this.edad=32;
         this.casado= false;
@@ -29,6 +39,31 @@ export class ProfesorComponent{
         ];
         this.color='green';
     }
+
+    ngOnInit(): void {
+       // console.log(this.profesor);
+     this._peticionesService.getPosts().subscribe(
+         res=>{
+            this.api_posts=res;
+            if (!this.api_posts) 
+            console.log ("Respuesta vacia de la api");
+
+
+         },
+         error=>{
+            console.log(<any>error);
+         }
+     );
+     /*
+     this._route.params.forEach({params: Params)=>{
+     this.parametro=params("nombre");
+
+    })
 }
 
 
+}
+
+*/
+    }
+}
